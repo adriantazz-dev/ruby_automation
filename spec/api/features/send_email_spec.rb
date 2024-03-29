@@ -1,11 +1,10 @@
 require 'spec_helper'
-require_relative '../requests/email_service.rb'
+require_relative '../services/email_service.rb'
 
-TOKEN = ENV['POSTMARK_API_TOKEN']
 EMAIL = ENV['POSTMARK_EMAIL']
 
 describe EmailService do
-  subject(:email_service) { EmailService.new(TOKEN) }
+  subject(:email_service) { EmailService.new(ENV['POSTMARK_API_TOKEN']) }
 
   describe '#send_email' do
     let(:email_options) do
