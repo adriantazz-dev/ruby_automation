@@ -26,10 +26,10 @@ RUN bundle update selenium-webdriver
 COPY . .
 
 # Set environment variables
-ENV TEST_USER="" \
-    TEST_PASSWORD="" \
-    POSTMARK_API_TOKEN="" \
-    POSTMARK_EMAIL=""
+# ENV TEST_USER="" \
+#     TEST_PASSWORD="" \
+#     POSTMARK_API_TOKEN="" \
+#     POSTMARK_EMAIL=""
 
-# Set the default command to execute
-CMD ["rspec"]
+# Default command to execute
+# CMD ["rspec"]
