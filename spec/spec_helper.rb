@@ -1,10 +1,9 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
-require 'webdrivers'
+# require 'webdrivers'
 require_relative 'ui/pages/login_page'
 
-# Webdrivers gem configuration
-Webdrivers::Chromedriver.update
+# Webdrivers::Chromedriver.required_version = '123.0.6312.86'
 
 # Capybara configuration
 Capybara.configure do |config|

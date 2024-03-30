@@ -7,7 +7,7 @@ RSpec.describe 'Servers feature', type: :system do
 
     it 'displays the servers page' do
         servers_page.visit_servers_page
-        expect(page).to have_current_path('https://account.postmarkapp.com/servers', url: true)
+        expect(page).to have_current_path('https://account.postmarkapp.com/servers/', url: true)
     end
 
     it 'displays the servers list' do
