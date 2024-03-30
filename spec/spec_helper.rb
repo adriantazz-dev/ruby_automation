@@ -13,7 +13,7 @@ end
 
 # Configure RSpec to use Capybara's features for system tests
 RSpec.configure do |config|
-  config.before(:all, type: :system) do
+  config.before(:each, type: :system) do
     # Configuration for Selenium and Capybara
     Capybara.server = :puma, { Silent: true }
     Capybara.javascript_driver = :selenium_chrome_headless
@@ -31,9 +31,9 @@ RSpec.configure do |config|
     end
 
     # Global login setup for system tests
-    login_page = LoginPage.new
-    login_page.visit_login_page
-    login_page.login(ENV['TEST_USER'], ENV['TEST_PASSWORD'])
+    # login_page = LoginPage.new
+    # login_page.visit_login_page
+    # login_page.login(ENV['TEST_USER'], ENV['TEST_PASSWORD'])
   end
 
   # RSpec configurations
