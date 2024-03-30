@@ -31,10 +31,10 @@ RUN bundle install
 COPY . .
 
 # Set environment variables
-ENV TEST_USER="testadri" \
-    TEST_PASSWORD="asdfg12345" \
-    POSTMARK_API_TOKEN="95e4a0b0-07aa-4e12-90ea-28e1fa8b41f6" \
-    POSTMARK_EMAIL="test@test.com"
+ENV TEST_USER="" \
+    TEST_PASSWORD="" \
+    POSTMARK_API_TOKEN="" \
+    POSTMARK_EMAIL=""
 
 # Set the default command to execute
 CMD ["rspec"]
