@@ -5,6 +5,8 @@ class ServersPage
   SERVERS_LIST_SELECTOR = '.servers-list'.freeze
   CREATE_SERVER_LINK_TEXT = 'Create server'.freeze
   CREATE_SERVER_LINK_SELECTOR = 'a.u-btn.u-btn--l'.freeze
+  NAME_YOUR_SERVER_FIELD = '#server_name'.freeze
+  SUBMIT_CREATE_SERVER_BUTTON = "input[type='submit'][name='commit'][value='Create server']".freeze
 
   def visit_servers_page
     visit(SERVERS_PAGE_URL)
@@ -12,6 +14,10 @@ class ServersPage
 
   def on_servers_page?
     has_current_path?(SERVERS_PAGE_URL, url: true)
+  end
+
+  def on_new_server_page?
+    has_current_path?("#{SERVERS_PAGE_URL}new", url: true)
   end
 
   def server_list_present?
@@ -22,8 +28,20 @@ class ServersPage
     has_link?(CREATE_SERVER_LINK_TEXT, href: '/servers/new')
   end
 
-  # Utilizes the constant for the selector for consistency and maintainability.
-  def create_server
+  def create_new_server
     find("#{CREATE_SERVER_LINK_SELECTOR}", text: CREATE_SERVER_LINK_TEXT).click
   end
+
+  def type_new_server_name(server_name)
+    find(NAME_YOUR_SERVER_FIELD).set(server_name)
+  end
+
+  def submit_create_server
+    find(SUBMIT_CREATE_SERVER_BUTTON).click
+  end
+
+  def server_created_successfully?
+    has_current_path?(/#{Regexp.escape(SERVERS_PAGE_URL)}\d+\/streams/, url: true)
+  end
+
 end
