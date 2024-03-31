@@ -1,9 +1,6 @@
 require 'capybara/rspec'
 require 'selenium-webdriver'
-# require 'webdrivers'
 require_relative 'ui/pages/login_page'
-
-# Webdrivers::Chromedriver.required_version = '123.0.6312.86'
 
 # Capybara configuration
 Capybara.configure do |config|
@@ -33,13 +30,15 @@ RSpec.configure do |config|
       Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
     end
   end
-
+  # Enables detailed error messages for custom matchers.
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
-
+  # Configures RSpec's mocking framework.
   config.mock_with :rspec do |mocks|
+    # Ensures stubs/mocks match the real implementations.
     mocks.verify_partial_doubles = true
   end
+  # Applies shared context metadata to all test groups automatically.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end

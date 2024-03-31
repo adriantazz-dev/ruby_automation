@@ -1,7 +1,9 @@
 class ServersPage
   include Capybara::DSL
 
+  # PAGE URL
   SERVERS_PAGE_URL = 'https://account.postmarkapp.com/servers/'.freeze
+  # SELECTORS
   SERVERS_LIST_SELECTOR = '.servers-list'.freeze
   CREATE_SERVER_LINK_TEXT = 'Create server'.freeze
   CREATE_SERVER_LINK_SELECTOR = 'a.u-btn.u-btn--l'.freeze
