@@ -41,6 +41,7 @@ class ServersPage
   end
 
   def server_created_successfully?
+    # A better approach would be to catch the server id and add it to the URL
     has_current_path?(/#{Regexp.escape(SERVERS_PAGE_URL)}\d+\/streams/, url: true)
   end
 

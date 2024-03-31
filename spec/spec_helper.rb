@@ -19,7 +19,7 @@ RSpec.configure do |config|
     Capybara.javascript_driver = :selenium_chrome_headless
     Capybara.current_driver = :selenium_chrome_headless
     
-    # Define options for Chrome
+    # Define options for Chrome, including logging preferences
     Capybara.register_driver :selenium_chrome_headless do |app|
       options = Selenium::WebDriver::Chrome::Options.new
       options.add_argument('--headless')
@@ -27,16 +27,13 @@ RSpec.configure do |config|
       options.add_argument('--no-sandbox') # For CI environments
       options.add_argument('window-size=1920,1080')
       
+      # Suppress console log messages about third-party cookies
+      options.add_preference(:loggingPrefs, browser: 'OFF')
+      
       Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
     end
-
-    # Global login setup for system tests
-    # login_page = LoginPage.new
-    # login_page.visit_login_page
-    # login_page.login(ENV['TEST_USER'], ENV['TEST_PASSWORD'])
   end
 
-  # RSpec configurations
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end

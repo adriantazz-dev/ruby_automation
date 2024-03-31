@@ -32,4 +32,4 @@ COPY . .
 #     POSTMARK_EMAIL=""
 
 # Default command to execute
-# CMD ["rspec"]
+CMD ["rspec"]
